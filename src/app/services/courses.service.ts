@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { firstValueFrom, Observable } from 'rxjs';
 import { Course } from '../models/course.model';
 import { GetCoursesResponse } from '../models/get-courses.response';
+import { SkipLoading } from '../loading/skip-loading.component';
 // import { SkipLoading } from '../loading/skip-loading.component';
 
 @Injectable({
@@ -33,6 +34,7 @@ export class CoursesService {
     const course$ = this.http.post<Course>(
       `${this.env.apiRoot}/courses`,
       course
+      // { context: new HttpContext().set(SkipLoading, true) } // Exception for showing the loader on http interceptor
     );
     return firstValueFrom(course$);
   }

@@ -60,7 +60,7 @@ export class HomeComponent {
       const courses = await this._coursesService.loadAllCourses();
       this._courses.set(courses.sort(sortCoursesBySeqNo));
     } catch (err) {
-      // this.messageService.showMessage(`Error loading courses!`, 'error');
+      this._messageService.showMessage(`Error loading courses!`, 'error');
       console.error(err);
     }
   }
